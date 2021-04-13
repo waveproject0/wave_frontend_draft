@@ -1,0 +1,14 @@
+<div class="p-2">
+  <mat-action-list style="padding: 0px;">
+    <button disableRipple mat-list-item class="button-style-4 mb-2" (click)="navInterest ? null : settingsNav('Interest')"
+    [ngClass]="{'button-active-2': navInterest}"
+    >
+    Interest
+  </button>
+    <button disableRipple mat-list-item class="button-style-4 mb-2" (click)="navFieldofstudy ? null : settingsNav('Fieldofstudy')"
+    [ngClass]="{'button-active-2': navFieldofstudy}"
+    >
+    Field Of Study
+  </button>
+  </mat-action-list>
+</div>

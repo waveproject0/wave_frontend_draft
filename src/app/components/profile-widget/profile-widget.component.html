@@ -1,0 +1,9 @@
+<div class="circle" [ngStyle]="{'background-color': circleColor, 'width': size, 'height': size}"
+[style.display]="showInitials ? 'inline-flex' : 'block'"
+>
+    <img *ngIf="!showInitials" src="{{photoUrl}}" [ngStyle]="{'width': size, 'height': size}">
+
+    <div *ngIf="showInitials" class="initials">
+        {{ initials }}
+    </div>
+</div>

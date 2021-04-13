@@ -1,0 +1,29 @@
+<mat-toolbar class="app-status-bar justify-content-between" style="background-color: white;">
+  <p *ngIf="initialSetup else editeInterest" class="mat-body-2 space-gray-color-text mb-0"><strong>Select what interests you</strong></p>
+  <ng-template #editeInterest>
+    <p class="mat-body-2 space-gray-color-text mb-0"><strong>Edit your interests</strong></p>
+  </ng-template>
+  <p class="mat-caption rich-black-color-text mb-0"><strong>{{chipSelectionCounter}}</strong><span class="gray-color-text">/10</span></p>
+  <button class="button-style-1 button-load-style" style="width: 18%;" mat-raised-button disableRipple [disabled]="chipSelectionCounter>0 && chipChanged ? false : true" type="button"
+    (click)="chipSubmit()"
+  >
+    <mat-spinner *ngIf="selectedInterestSaving; else NotSaving" class="button-loading-spinner white-loading-spinner">
+    </mat-spinner>
+    <ng-template #NotSaving>
+      Submit
+    </ng-template>
+  </button>
+</mat-toolbar>
+
+<div class="app-container-style interest-container">
+  <div class="interest" [ngClass]="{'mb-5': !last}" *ngFor="let interest_category of allInterestCategory; last as last">
+    <p class="mat-body-2 rich-black-color-text d-inline-block"><strong>{{interest_category.name}}</strong></p>
+    <mat-chip-list [multiple]="true" [selectable]="true">
+      <mat-chip disableRipple *ngFor="let interest_keyword of interest_category.interest_keyword"
+      [selected]="interest_keyword.selected" (click)="chipClick(interest_keyword)"
+      (selectionChange)="chipChangeSelected($event)">
+        {{interest_keyword.name}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</div>

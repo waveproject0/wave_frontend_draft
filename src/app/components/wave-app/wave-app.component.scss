@@ -1,0 +1,80 @@
+.app-container{
+  display: flex;
+  overflow: hidden;
+  height: 90vh;
+  border:1px solid #dcdcdc;
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+}
+
+html[dir] .align-container {
+  transform: translateZ(0);
+}
+
+html[dir=ltr] .right-container {
+  transform-origin: left top;
+}
+.align-container{
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.left-container{
+  flex: 35%;
+}
+
+.right-container{
+  flex: 65%;
+}
+
+.nav-color{
+  backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(255,255,255,.2);
+  /*background-color: var(--gray-background);*/
+}
+
+.inline-div{
+  display: inline;
+}
+.nav-link a{
+  font-size: var(--link-text-size);
+}
+.nav-link a:link, .nav-link a:visited{
+  color: var(--gray-text);
+  text-decoration: none;
+}
+.nav-link a:link:hover, .nav-link a:visited:hover{
+  color: var(--rich-black);
+}
+.nav-button:link, .nav-button:visited{
+  background-color: var(--pacific-blue);
+  font-size: var(--link-text-size);
+  color:white;
+  text-decoration: none;
+}
+.nav-button:link:active, .nav-button:visited:active{
+  background-color: white;
+  color: var(--pacific-blue);
+}
+
+.component-style{
+  overflow-y: auto;
+  display: block;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px!important;
+  height: 8px!important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,.2);
+}
+/*
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+*/
+* {
+  scrollbar-color: rgba(0,0,0,.2) hsla(0,0%,100%,.1);
+  scrollbar-width: thin;
+}

@@ -1,0 +1,19 @@
+// Override the typography in the core CSS.
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Poppins, Lato, sans-serif'
+);
+
+@include mat-core($custom-typography);
+
+
+#web-link-input{
+  outline: none;
+  height:45px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border:1px solid #dcdcdc;
+  box-shadow: 1px 1px 8px 1px #dcdcdc;
+  font-size:13px;
+}

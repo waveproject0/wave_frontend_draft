@@ -1,0 +1,14 @@
+// Override the typography in the core CSS.
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Poppins, Lato, sans-serif'
+);
+
+@include mat-core($custom-typography);
+
+
+.tags{
+  min-height: 24px;
+  font-size: 14px;
+}

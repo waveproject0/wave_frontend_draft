@@ -1,0 +1,43 @@
+<div class="app-body" style="min-height: 100%;" (window:resize)="onResize()">
+
+  <div class="container-fluid my-container">
+    <div class="row" *ngIf="currentPath != 'app' ">
+      <mat-toolbar style="background-color: white;" class="mat-elevation-z0 justify-content-between">
+        <div mat-button disableRipple routerLink="/" class="d-flex justify-content-center" style="outline: none; cursor:pointer;">
+            <img [src]="wave_long_logo_url" width="65px">
+        </div>
+        <div>
+          <ng-container *ngIf="currentPath != 'account' ">
+            <button mat-stroked-button class="button-style-1" routerLink="/app"
+            *ngIf="isLogin"
+            >
+              Go To App
+            </button>
+
+            <button *ngIf="!isLogin" mat-stroked-button routerLink="/account" class="mr-4 button-style-3">Login</button>
+
+            <button *ngIf="!isLogin" mat-raised-button routerLink="/account" fragment="signup" class="button-style-1">Signup</button>
+          </ng-container>
+        </div>
+      </mat-toolbar>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+
+  <ng-container *ngIf="currentPath != 'app' ">
+    <mat-divider></mat-divider>
+    <div class="d-flex align-items-center w-100 footer">
+      <div style="flex: 1;">
+        <p class="mat-subheading-1 footer-left m-0" style="font-family: Poppins;">Nurtured by Pinekown &#169; 2018 - 2021</p>
+      </div>
+      <div style="flex: 1;">
+        <p class="mat-subheading-1 text-center m-0" style="font-family: Poppins;">Wave &#169; 2021</p>
+      </div>
+      <div style="flex: 1;">
+        <p class="mat-subheading-1 footer-right m-0" style="font-family: Poppins;">Supported in {{indiaName}}</p>
+      </div>
+    </div>
+  </ng-container>
+
+</div>

@@ -1,0 +1,10 @@
+{
+  "/proxy": {
+    "target": "",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/proxy": ""
+    }
+  }
+}

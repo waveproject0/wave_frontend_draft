@@ -1,0 +1,39 @@
+<mat-toolbar class="nav-color-2 mat-elevation-z0 app-status-bar justify-content-between">
+  <ng-container *ngIf="navCreatedVuesState">
+    <p class="mat-body-2 space-gray-color-text mb-0"><strong>Your Vues</strong></p>
+    <p class="mat-caption rich-black-color-text mb-0"><strong>{{myVueArrayLength}}</strong></p>
+    <button mat-icon-button disableRipple class="button-style-1 mat-elevation-z2" (click)="navStateChange('createvue')"
+    [style.visibility]="myVueEmpty === false ? 'visible' : 'hidden' "
+    >
+      <mat-icon style="line-height: 22px;">add</mat-icon>
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="navCreateVueState">
+    <div>
+      <button mat-icon-button disableRipple class="button-style-1 mat-elevation-z2" (click)="backToMyvue()">
+        <mat-icon style="line-height: 20px; margin-right: 2.5px;">arrow_back_ios_new</mat-icon>
+      </button>
+      &nbsp;&nbsp;<span class="mat-body-2">Your Vues</span>
+    </div>
+
+    <span class="mat-caption">{{createVueStatusMessage}}</span>
+
+    <p class="mat-body-2 space-gray-color-text mb-0"><strong>Create Your Vue</strong></p>
+
+  </ng-container>
+
+</mat-toolbar>
+
+<div class="app-container-style" [style.min-height]="appContainerHeight" [style.background-image]="typography_backgorund_url"
+style="max-height: max-content"
+>
+  <app-created-vues class="w-100" *ngIf="navCreatedVuesState" (createVueRequest)="navStateChange('createvue')"
+  (myVueEmptyEvent)="VueEmptyEvent($event)"
+  >
+  </app-created-vues>
+  <app-create-vue class="w-100" *ngIf="navCreateVueState" (linkResultStatus)="createVueStatus($event)"
+  (vueConstructed)="vueConstructed()" (vueSubmited)="vueSubmited()"
+  >
+  </app-create-vue>
+</div>

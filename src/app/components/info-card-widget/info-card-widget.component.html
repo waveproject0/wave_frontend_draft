@@ -1,0 +1,17 @@
+<div class="outer-container">
+    <div class="inner-container">
+        <div class="img-container" 
+        [style.background-image]="'url('+ imgUrl +')'"
+        [style.display]="imgUrl ? 'inherit' : 'none'"
+        >
+        </div>
+        <div class="text-container">
+            <div class="title-text" [style.display]="titleText ? 'inherit' : 'none'">
+                <span class="mat-body-2">{{titleText}}</span>
+            </div>
+            <div class="subtitle-text" [style.display]="subtitleText ? 'inherit' : 'none'">
+                <span class="mat-caption">{{subtitleText}}</span>
+            </div>
+        </div>
+    </div>
+</div>

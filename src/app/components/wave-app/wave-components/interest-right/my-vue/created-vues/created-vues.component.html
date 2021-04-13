@@ -1,0 +1,58 @@
+<div *ngIf="loading || myVueError || myVueEmpty; else myVueList" class="d-flex flex-column justify-content-center align-items-center" [style.height]="appContainerHeight">
+  <ng-container *ngIf="loading">
+    <app-loading></app-loading>
+  </ng-container>
+
+  <ng-container *ngIf="myVueError">
+    <div>
+      <p class="mat-display-1 mb-0 d-inline-block"><strong>Sorry,</strong></p>
+      <p class="mat-subheading-1 d-inline-block">&nbsp;
+        <strong class="pr-2 pl-2 pt-1 pb-1" style="border:3px solid var(--rich-red); border-radius: 7px;">
+          Error Occurred
+        </strong>
+      </p>
+    </div>
+    <button class="button-style-1 w-25 mt-3" mat-raised-button disableRipple type="button" (click)="getMyVue()">
+      Try Again
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="myVueEmpty=== true">
+    <p class="mat-title" style="color:var(--gray-text)">
+      all Your Vues will appear here. Start with your very <strong style="color:var(--rich-black);">first</strong>
+    </p>
+    <button mat-icon-button disableRipple class="button-style-1 mat-elevation-z2 mr-2 ml-2" (click)="createVue()">
+      <mat-icon style="line-height: 22px;">add</mat-icon>
+    </button>
+  </ng-container>
+</div>
+
+<ng-template #myVueList>
+  <div *ngIf="!loading && myVueEmpty === false" [style.min-height]="appContainerHeight">
+    <div *ngIf="masonryLoading" class="d-flex justify-content-center align-items-center" style="position:absolute; width: 95%;"
+    [style.min-height]="appContainerHeight"
+    >
+      <app-loading></app-loading>
+    </div>
+
+    <ngx-masonry [options]="masonryOption" [ordered]="true" (itemsLoaded)="masonryLoading = false" style="margin: 0 auto;">
+      <app-vue ngxMasonryItem class="mb-4" [linkPreview]="myVueData" [editVue]="true" *ngFor="let myVueData of myVueDataArray"
+      (vueDeleted)="updateVueLayout($event)"
+      >
+      </app-vue>
+    </ngx-masonry>
+
+    <div *ngIf="fetchMore || fetchMoreError" class="d-flex justify-content-center mt-4">
+      <button class="button-style-2 button-load-style" style="width: 20rem;" mat-raised-button disableRipple type="button"
+      (click)="getMyVue(true)" [ngClass]="fetchMoreError ? 'button-error-style' : 'button-style-2' "
+      >
+        <mat-spinner *ngIf="fetchMoreLoading; else loadMore" class="button-loading-spinner blue-loading-spinner">
+        </mat-spinner>
+        <ng-template #loadMore>
+          <mat-icon>autorenew</mat-icon> {{fetchMoreError ? 'Try Again' : 'Load More'}}
+        </ng-template>
+      </button>
+    </div>
+
+  </div>
+</ng-template>

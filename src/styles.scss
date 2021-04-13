@@ -1,0 +1,438 @@
+// Override the typography in the core CSS.
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Lato, Poppins, sans-serif'
+);
+
+@include mat-core($custom-typography);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Poppins", "Lato", sans-serif;}
+
+:root{
+    --pacific-blue: #233E49;
+    --light-pacific-blue: #1ca9c9;
+    --gray-text: #767681;
+    --rich-yellow: #F3D060;
+    --rich-red: #BA0C2E;
+    --rich-black: #25282A;
+    --rich-gray: #dddbd1;
+    --primiam-gray: #f2f2f2;
+    --primiam-gray-text: #70757a;
+    --white: #F9F6EF;
+    --white-smokes: #f5f5f5;
+    --gray-background: #f1f3f4;
+    --space-gray: #535150;
+    --silver: #E4E4E2;
+    --sucess: #009688;
+    --link-text-size: 12px;
+    --logo-text-size: 25px;
+
+    --shadow-dense: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+    --shadow-medium-spread: 1px 1px 8px 1px #dcdcdc;
+    --shadow-3d: 0 40px 85px rgb(0 0 0 / 30%);
+    --shadow-whatsapp: 0 17px 50px 0 rgb(0 0 0 / 19%), 0 12px 15px 0 rgb(0 0 0 / 24%);
+    --shadow-cool: 0 5px 5px 0 rgb(154 160 185 / 5%), 0 5px 30px 0 rgb(166 173 201 / 22%);
+}
+.rich-black-color-text{
+  color: var(--rich-black);
+}
+
+.pacific-blue-text{
+  color: var(--pacific-blue);
+}
+
+.gray-color-text{
+  color: var(--gray-text);
+}
+
+.space-gray-color-text{
+  color: var(--space-gray);
+}
+
+.highlight {
+  background: linear-gradient(180deg,rgba(255,255,255,0.2) 90%, #BA0C2E 0%);
+}
+
+.gray-background{
+  background-color: #dddbd1;
+  background-image: linear-gradient(180deg,#dddbd1,#d2dbdc);
+}
+
+.mat-focus-indicator{
+    outline: 0 !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick{
+  color: var(--pacific-blue);
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
+  color: var(--rich-red);
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar{
+    background-color: var(--pacific-blue);
+}
+
+.mat-tab-label, .mat-tab-link{
+    color: var(--rich-black);
+}
+
+#home-tab{
+  > mat-tab-header{
+    border-bottom: none !important;
+  }
+
+  > .mat-tab-body-wrapper{
+    margin-top: 3rem;
+
+    > mat-tab-body{
+      > .mat-tab-body-content{
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+
+.mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: var(--pacific-blue);
+}
+
+.mat-form-field.mat-focused .mat-form-field-label{
+  color: var(--pacific-blue) !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: var(--rich-red) !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple{
+  background-color: var(--rich-red) !important;
+}
+
+.mat-form-field-ripple{
+    background-color: var(--pacific-blue);
+}
+
+.disabled-form-field .mat-input-element:disabled{
+  color: var(--rich-black);
+}
+
+.disabled-form-field .mat-form-field-disabled .mat-form-field-underline{
+  background-image: none !important;
+  background-color: rgba(0,0,0,0) !important;
+}
+
+.form-field-loading-spinner{
+  width: 18px !important;
+  height: 18px !important;
+  margin-right: 10px !important;
+}
+
+.form-field-loading-spinner svg{
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.button-load-style{
+  display: flex !important;
+  justify-content: center !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  line-height: 25px !important;
+}
+
+.button-loading-spinner{
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.button-loading-spinner svg{
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.vue-loading-spinner{
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.vue-loading-spinner svg{
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.white-loading-spinner circle{
+  stroke: white !important;
+}
+
+.blue-loading-spinner circle{
+  stroke: var(--pacific-blue) !important;
+}
+
+
+#vue-description-textarea  .mat-form-field-infix {
+  padding: 0px !important;
+  padding-bottom: .5em !important;
+  padding-top: .9em !important;
+  line-height: 1.5em !important;
+  border-top:0px !important;
+}
+
+.profile-form{
+  background-color: var(--white-smokes);
+  border-radius: 5px;
+  margin-top: 0.5rem;
+}
+
+.profile-form .mat-form-field-appearance-standard .mat-form-field-flex {
+  padding-top: 0px !important;
+}
+
+.profile-form .mat-form-field-infix{
+  border-top: 0px;
+}
+
+
+.mat-datepicker-toggle-default-icon{
+    width: 1.5em !important;
+}
+.mat-datepicker-toggle-active{
+    color: var(--pacific-blue);
+}
+
+.button-style-1{
+    background-color: var(--pacific-blue);
+    color: white;
+}
+.button-style-1:focus{
+    outline: none;
+}
+.button-style-1:active{
+    background-color: white;
+    color: var(--pacific-blue);
+}
+
+.button-style-2{
+    background-color: var(--gray-background);
+    color: var(--pacific-blue);
+}
+.button-style-2:focus{
+    outline: none;
+}
+.button-style-2:active{
+    background-color: var(--pacific-blue);
+    color: white;
+}
+
+.button-style-3{
+  color: var(--gray-text);
+}
+.button-style-3:focus{
+  outline: none;
+}
+.button-style-3:active{
+  color: var(--pacific-blue);
+}
+
+.button-style-4{
+  background-color: var(--white-smokes);
+  border-radius: 5px;
+}
+
+.button-style-5{
+  background-color: var(--gray-background);
+  color: var(--light-pacific-blue);
+}
+
+.button-error-style{
+  background-color: var(--rich-red);
+  color: white;
+}
+
+.button-error-style:active{
+  background-color: var(--white-smokes);
+  color: var(--pacific-blue);
+}
+
+.button-active{
+  color: var(--pacific-blue);
+}
+
+.button-active-2{
+  background-color: var(--pacific-blue) !important;
+  color: white !important;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mat-error{
+  color: var(--gray-text) !important;
+}
+
+.mat-hint{
+  color: var(--gray-text) !important;
+}
+
+.my-mat-error{
+    color: var(--rich-red) !important;
+}
+.my-mat-success{
+    color: var(--sucess) !important;
+}
+.my-mat-link{
+    color:var(--light-pacific-blue) !important;
+    cursor: pointer;
+}
+.my-mat-link:active, .my-mat-link:focus{
+    outline: 0;
+    border: none;
+}
+/*
+.mat-horizontal-stepper-content{
+  visibility: ;
+}
+*/
+.stepper-form-next-button .mat-figure{
+    justify-content: flex-end !important;
+}
+.stepper-form-navigate-button .mat-figure{
+    justify-content: space-between !important;
+}
+#signup-stepper .mat-horizontal-stepper-header-container{
+    display: None;
+}
+#institution-registration .mat-horizontal-stepper-header-container{
+    display: none;
+}
+
+.mat-chip-list-wrapper{
+  margin: 0px !important;
+}
+
+.vue-interest-scroll .drag-scroll-content{
+  text-align: center;
+}
+
+/*
+.vue-chip > .mat-chip-list-wrapper{
+  height: 30px !important;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: rgba(0,0,0,.2) hsla(0,0%,100%,.1);
+  scrollbar-width: thin;
+}
+
+.vue-chip > .mat-chip-list-wrapper::-webkit-scrollbar{
+  width: 5px!important;
+  height: 5px!important;
+}
+
+.vue-chip > .mat-chip-list-wrapper::-webkit-scrollbar-thumb{
+  background-color: rgba(0,0,0,.2);
+}
+
+.vue-chip > .mat-chip-list-wrapper::-webkit-scrollbar-track{
+  background: hsla(0,0%,100%,.1);
+}
+*/
+
+.mat-standard-chip{
+  border: 2.3px solid var(--silver) !important;
+  background-color: inherit !important;
+  color: var(--rich-black) !important;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+  border: 2.3px solid var(--pacific-blue) !important;
+  background-color: var(--pacific-blue) !important;
+  color: white !important;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
+
+.mat-chip.mat-standard-chip::after {
+  background: none !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb{
+  background-color: var(--pacific-blue);
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar{
+  background-color: rgba(35, 62, 73, 0.52);
+}
+
+.mat-slide-toggle.mat-checked .mat-ripple-element {
+  background-color: var(--pacific-blue);
+}
+
+.app-container-style{
+  position: relative;
+  top: 59px;
+  padding: 10px;
+}
+
+.app-status-bar{
+  position: absolute;
+  z-index: 1;
+  height: 59px;
+}
+
+/*
+#search-bar .mat-form-field-outline{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    border-radius: 5px;
+}
+*/
+
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+ -webkit-user-select: none; /* Safari */
+ -khtml-user-select: none; /* Konqueror HTML */
+ -moz-user-select: none; /* Firefox */
+ -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.alert-box{
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  margin: 0px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsla(0,0%,70%,0.4);
+  z-index: 50;
+}
+
+.normal-blur{
+  backdrop-filter: blur(10px);
+}
+
+.frosted-glass-blur{
+  box-shadow: inset 0 0 0 200px rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+
+.vue-grid{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+  grid-auto-rows: auto;
+}
+
+.item{
+  justify-self: center;
+}
+
+.vue-box{
+  background-color: white;
+}

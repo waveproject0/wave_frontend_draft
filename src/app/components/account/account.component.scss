@@ -1,0 +1,22 @@
+.account-form-vertical-position{
+    margin-top: 5vh;
+}
+
+.box-shadow-none{
+  box-shadow: var(--shadow-medium-spread);
+}
+
+@media (max-width: 768px){
+    .box-shadow-none{
+      box-shadow: none;
+    }
+}
+/*
+.account-info-text{
+    background-color: var(--pacific-blue);
+
+}
+.mat-display-1,.mat-subheading-2, .mat-body-1{
+    color:white;
+}
+*/

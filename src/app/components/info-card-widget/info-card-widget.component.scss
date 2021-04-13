@@ -1,0 +1,36 @@
+.outer-container{
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    max-height: none;
+    padding: 0;
+}
+.inner-container{
+    display: flex;
+    flex: auto;
+    align-items: center;
+    margin: 0 20px 0 14px;
+}
+.img-container{
+    margin: 4px 7px 4px -5px;
+    border-radius: 5px;
+    min-height: 40px;
+    min-width: 40px;
+    background: center/contain no-repeat;
+}
+.text-container{
+    flex: auto;
+    flex-direction: column;
+    min-width: 0;
+    max-height: none;
+    padding: 6px 0;
+}
+.title-text{
+    flex: auto;
+    align-items: center;
+    padding-right: 8px;
+}
+.subtitle-text{
+    color: var(--gray-text);
+    margin-top: 2px;
+}

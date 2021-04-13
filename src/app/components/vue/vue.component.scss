@@ -1,0 +1,53 @@
+.box {
+  background-color: white;
+  border-radius: 10px;
+  color: #4a4a4a;
+  display: block;
+  width: 260px;
+  box-shadow: var(--shadow-dense);
+}
+
+.box-side-padding{
+  padding: 0.3rem 0.5rem;
+}
+
+.box img{
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+img {
+  max-height: 150px;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.nowrap {
+  overflow: hidden !important;
+  white-space: nowrap;
+}
+
+.preview_tags{
+  min-height: 20px;
+  font-size: 10px;
+}
+
+.vue-conversation-enabled{
+  background-color: var(--pacific-blue);
+  color: white;
+}
+
+.vue-conversation-disabled{
+  background-color: var(--silver);
+  color: va(--rich-black);
+}
+
+.vue-action{
+  height: 2rem;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.vue-action-icon{
+  font-size: 20px;
+  width: 20px;
+}

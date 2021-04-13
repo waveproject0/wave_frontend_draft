@@ -1,0 +1,56 @@
+<div class="p-2 h-100 d-flex flex-column justify-content-between">
+  <div>
+    <mat-chip-list [multiple]="true" [selectable]="true" *ngIf="studentInterests.length != 0; else emptyInterest">
+      <ng-container *ngFor="let studentInterest of studentInterests">
+        <mat-chip disableRipple *ngIf="studentInterest.saved"
+        [selected]="studentInterest.selected" (click)="interestClicked(studentInterest)"
+        >
+          {{studentInterest.name}}
+        </mat-chip>
+      </ng-container>
+    </mat-chip-list>
+    <br>
+    <mat-chip-list [multiple]="true" [selectable]="true" *ngIf="isVueConstructed">
+      <ng-container *ngFor="let studentInterest of studentInterests">
+        <mat-chip disableRipple *ngIf="!studentInterest.saved"
+        [selected]="studentInterest.selected" (click)="interestClicked(studentInterest)"
+        >
+          {{studentInterest.name}}
+        </mat-chip>
+      </ng-container>
+    </mat-chip-list>
+  </div>
+
+  <ng-template #emptyInterest>
+    <div class="d-flex justify-content-center align-items-center" style="height:50px; border: 2px dashed var(--gray-background);">
+      <div>
+        <span class="mat-subheading-2">Your selected</span>
+        <mat-chip class="tags mr-2 ml-2" [selected]="true">Interest</mat-chip>
+        <span class="mat-subheading-2">will appear here.</span>
+      </div>
+    </div>
+  </ng-template>
+
+  <mat-action-list class="mt-4" style="padding: 0px;">
+    <button disableRipple mat-list-item class="button-style-4 mb-2" (click)="navVuesState ? null : appNav('vues')"
+    [ngClass]="{'button-active-2':navVuesState}"
+    >
+    Vues
+    </button>
+    <button disableRipple mat-list-item class="button-style-4 mb-2" (click)="navMyvueState ? null : appNav('myvue')"
+    [ngClass]="{'button-active-2':navMyvueState}"
+    >
+      Your Vues
+    </button>
+    <button disableRipple mat-list-item class="button-style-4 mb-2" (click)="navSavedvueState ? null : appNav('savedvue')"
+    [ngClass]="{'button-active-2':navSavedvueState}"
+    >
+      Vue later
+    </button>
+    <button disableRipple mat-list-item class="button-style-4 mb-2" (click)="navVuehistoryState ? null : appNav('vuehistory')"
+    [ngClass]="{'button-active-2':navVuehistoryState}"
+    >
+     History
+    </button>
+  </mat-action-list>
+</div>
