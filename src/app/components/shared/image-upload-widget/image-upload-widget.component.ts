@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, EventEmi
 import { LyDialog } from '@alyle/ui/dialog';
 import { ImgCropperEvent } from '@alyle/ui/image-cropper';
 import { CropperImgDialogComponent } from './../cropper-img-dialog/cropper-img-dialog.component';
-import { dataURLtoFile } from 'src/app/_helpers/functions.utils';
+import { dataURLtoFile } from './../../../_helpers/functions.utils';
 
 
 @Component({

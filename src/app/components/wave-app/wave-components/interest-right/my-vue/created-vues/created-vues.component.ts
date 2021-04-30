@@ -25,6 +25,7 @@ export class CreatedVuesComponent implements OnInit, OnDestroy {
   loading = true;
   masonryLoading = true;
   appContainerHeight:string;
+  appRightContainerWidth:string;
   myVueEmpty:boolean;
   myVueError = false;
   myVuefetchLength = 5;
@@ -44,6 +45,7 @@ export class CreatedVuesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.appContainerHeight = (this.appDataShareService.appContainerHeight - 59 - 10 - 10) + 'px';
+    this.appRightContainerWidth = (this.appDataShareService.appRightContainerWidth - 20) + 'px';
 
     if (this.appDataShareService.myVueArray.length != 0){
       this.appDataShareService.myVuePageInfo ? this.fetchMore = this.appDataShareService.myVuePageInfo.hasNextPage : null;

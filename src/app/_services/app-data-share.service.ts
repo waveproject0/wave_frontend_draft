@@ -1,15 +1,17 @@
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
-import { INTEREST_KEYWORD, LINK_PREVIEW, PAGE_INFO } from './../_helpers/constents';
+import { INTEREST_KEYWORD, LINK_PREVIEW, PAGE_INFO, dev_prod } from './../_helpers/constents';
 import { BehaviorSubject } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppDataShareService {
 
-  constructor() { }
+  constructor() {
+    isDevMode() ? this.vue_background="url('assets/svg/topography.svg')" : this.vue_background="url("+dev_prod.staticUrl_prod+'assets/svg/topography.svg'+")";
+  }
 
   initialSetup = new BehaviorSubject<boolean>(null);
 
@@ -30,15 +32,26 @@ export class AppDataShareService {
   alertResponse(): Observable<boolean | string> {
     return this.alertInput.asObservable();
   }
-  //alertResponse = new BehaviorSubject<boolean>(null);
 
   appContainerHeight:number;
   appContainerWidth:number;
+  appRightContainerWidth:number;
+
+  vue_background:string;
 
   locationEdited = false;
 
   myVueArray:LINK_PREVIEW[] = [];
   myVuePageInfo:PAGE_INFO;
+
+  vueFeedArray:LINK_PREVIEW[] = [];
+  vueFeedPageInfo:PAGE_INFO;
+
+  vueHistoryArray:LINK_PREVIEW[] = [];
+  vueHistoryPageInfo:PAGE_INFO;
+
+  vueSaveArray:LINK_PREVIEW[] = [];
+  vueSavePageInfo:PAGE_INFO;
 
   isVueConstructed = new BehaviorSubject<boolean>(null);
 
@@ -50,4 +63,5 @@ export class AppDataShareService {
     this.currentSelectedInterestArray = [];
     this.myVueArray = [];
   }
+
 }

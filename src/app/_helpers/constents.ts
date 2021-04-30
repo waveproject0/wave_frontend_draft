@@ -12,8 +12,23 @@ export interface USER_OBJ{
   fullName:string,
   sex:string,
   dob:string,
+  age:number,
   profilePictureUrl:string,
-  location:LOCATION
+  institution:INSTITUTION,
+  location:LOCATION,
+  locationPreference:string,
+  conversationPoints:number,
+  agePreference:number
+}
+
+export interface USER_PREFERENCE{
+  country?:string,
+  region?:string,
+  institution?:INSTITUTION,
+  locationPreference?:string,
+  conversationPoints?:number,
+  agePreference?:number,
+  age?:number
 }
 
 export interface COORDINATE{
@@ -25,7 +40,13 @@ export interface LOCATION{
   postal_code:number,
   region:string,
   state_or_province:string,
-  country_code:string
+  country_name?:string,
+  country_code?:string
+}
+
+export interface INSTITUTION{
+  uid?:string,
+  name?:string
 }
 
 export interface REGION{
@@ -81,12 +102,15 @@ export interface LINK_PREVIEW{
   domain_name:string,
   description?:string,
   interest_keyword?:INTEREST_KEYWORD[],
-  conversation_disabled?:boolean,
   created?:string,
   friendly_date?:string,
   viewed?:number,
   saved?:number
-  cursor?:string
+  cursor?:string,
+  location?:string,
+  age?:number,
+  conversation_disabled?:boolean,
+  priority?:string
 }
 
 export interface ALERT_BOX{

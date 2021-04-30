@@ -1,7 +1,7 @@
 import { AppDataShareService } from './app-data-share.service';
 import { USER_LOCATION } from './../_helpers/graphql.query';
 import { take } from 'rxjs/operators';
-import { USER_OBJ, TRUSTED_DEVICE, LOCATION } from './../_helpers/constents';
+import { USER_OBJ, TRUSTED_DEVICE, LOCATION, INSTITUTION } from './../_helpers/constents';
 import { GraphqlService } from './graphql.service';
 import { UserDataService } from './user-data.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -75,70 +75,65 @@ export class AuthenticationService {
             refreshToken:refreshToken
           });
 
-          this.graphqlService.graphqlQuery({query:USER_LOCATION}).valueChanges.pipe(take(1))
-          .subscribe(
-            (location_result:any) =>{
-              if (location_result.errors){
-                this.loginFormErrorSubject.next(true);
-                this.userDataService.removeItem();
-                this.snackBar.open("something went Wrong!", "Try Again");
-              }
-              else{
-                const locationData = location_result.data.userPostalCode.edges[0].node;
-                const location:LOCATION = {
-                  postal_code : locationData.code === 0 ? null : locationData.code,
-                  region : locationData.region.name,
-                  state_or_province : locationData.region.stateOrProvince.name,
-                  country_code : locationData.region.stateOrProvince.country.code
-                }
-                const user_obj:USER_OBJ = {
-                  uid: user.uid,
-                  email: user.email,
-                  username: user.username,
-                  fullName: user.firstName,
-                  sex: (user.sex).toLowerCase( ),
-                  dob: user.dob,
-                  profilePictureUrl: user.profilePictureUrl,
-                  location: location
-                }
+          let institution:INSTITUTION = null;
+          if (user.studentprofile.institution != null){
+            institution = {
+              uid: user.studentprofile.institution.uid,
+              name: user.studentprofile.institution.name
+            }
+          }
 
-                this.userDataService.setItem({
-                  userObject:user_obj,
-                  studentState:user.studentprofile.state
-                });
-
-                user.studentprofile.relatedstudentinterestkeywordSet.edges.forEach(element => {
-                  this.appDataShareService.studentInterest.push({
-                    id: element.node.interest.id,
-                    name: element.node.interest.word,
-                    selected: false,
-                    saved: element.node.saved,
-                    count: element.node.count,
-                    average_percent: element.node.averagePercentage
-                  });
-                });
-
-                (async () => {
-                  const result = await this.graphqlService.getAllInterestCategory();
-                  if (result){
-                    this.graphqlService.onLoginChange(true);
-                    this.graphqlService.initialTokenRefresh = false;
-                    this.loginFormErrorSubject.next(false);
-                    this.graphqlService.studentInterestSnapshot();
-                  }
-                  else{
-                    this.loginFormErrorSubject.next(true);
-                    this.userDataService.removeItem();
-                  }
-                })();
-              }
+          const user_obj:USER_OBJ = {
+            uid: user.uid,
+            email: user.email,
+            username: user.username,
+            fullName: user.firstName,
+            sex: (user.sex).toLowerCase(),
+            dob: user.dob,
+            age: user.age,
+            profilePictureUrl: user.profilePictureUrl,
+            institution: institution,
+            location: {
+              postal_code: user.location.code === 0 ? null : user.location.code,
+              region: user.location.region.name,
+              state_or_province: user.location.region.stateOrProvince.name,
+              country_code: user.location.region.stateOrProvince.country.code,
+              country_name: user.location.region.stateOrProvince.country.name
             },
-            error =>{
+            locationPreference: user.studentprofile.locationPreference.toLowerCase(),
+            agePreference: Number(user.studentprofile.agePreference),
+            conversationPoints: Number(user.studentprofile.conversationPoints)
+          }
+
+          this.userDataService.setItem({
+            userObject:user_obj,
+            studentState:user.studentprofile.state
+          });
+
+          user.studentprofile.relatedstudentinterestkeywordSet.edges.forEach(element => {
+            this.appDataShareService.studentInterest.push({
+              id: element.node.interest.id,
+              name: element.node.interest.word,
+              selected: false,
+              saved: element.node.saved,
+              count: element.node.count,
+              average_percent: element.node.averagePercentage
+            });
+          });
+
+          (async () => {
+            const result = await this.graphqlService.getAllInterestCategory();
+            if (result){
+              this.graphqlService.onLoginChange(true);
+              this.graphqlService.initialTokenRefresh = false;
+              this.loginFormErrorSubject.next(false);
+              this.graphqlService.studentInterestSnapshot();
+            }
+            else{
               this.loginFormErrorSubject.next(true);
               this.userDataService.removeItem();
-              this.snackBar.open("something went Wrong!", "Try Again");
             }
-          );
+          })();
         }
         else{
           this.loginFormErrorSubject.next(true);

@@ -1,4 +1,5 @@
 // Override the typography in the core CSS.
+/*
 @import '~@angular/material/theming';
 
 $custom-typography: mat-typography-config(
@@ -6,3 +7,7 @@ $custom-typography: mat-typography-config(
 );
 
 @include mat-core($custom-typography);
+*/
+*{
+  font-family: "Poppins", sans-serif;
+}

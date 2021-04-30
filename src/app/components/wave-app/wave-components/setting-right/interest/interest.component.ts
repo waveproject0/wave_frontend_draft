@@ -1,9 +1,9 @@
-import { UserDataService } from './../../_services/user-data.service';
+import { UserDataService } from './../../../../../_services/user-data.service';
 import { take } from 'rxjs/operators';
-import { INTEREST_CATEGORY, INTEREST_KEYWORD, STUDENT_STATE_OBJ } from './../../_helpers/constents';
-import { AppDataShareService } from './../../_services/app-data-share.service';
-import { GraphqlService } from './../../_services/graphql.service';
-import { INTEREST_KEYWORD_MUTATION, ALL_INTEREST_CATEGORY } from './../../_helpers/graphql.query';
+import { INTEREST_CATEGORY, INTEREST_KEYWORD } from './../../../../../_helpers/constents';
+import { AppDataShareService } from './../../../../../_services/app-data-share.service';
+import { GraphqlService } from './../../../../../_services/graphql.service';
+import { INTEREST_KEYWORD_MUTATION, ALL_INTEREST_CATEGORY } from './../../../../../_helpers/graphql.query';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MatChipSelectionChange } from '@angular/material/chips';
 import {MatSnackBar} from '@angular/material/snack-bar';

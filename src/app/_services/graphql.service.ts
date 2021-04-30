@@ -1,5 +1,5 @@
 import { AppDataShareService } from './app-data-share.service';
-import { INTEREST_CATEGORY, INTEREST_KEYWORD, LOCATION, dev_prod } from './../_helpers/constents';
+import { INTEREST_CATEGORY, INTEREST_KEYWORD, LOCATION, dev_prod, state_language, INSTITUTION } from './../_helpers/constents';
 import { ALL_INTEREST_CATEGORY, USER_LOCATION, STUDENT_INTEREST_SNAPSHOT } from './../_helpers/graphql.query';
 import { UserDataService } from './user-data.service';
 import { Injectable, isDevMode } from '@angular/core';
@@ -235,65 +235,63 @@ export class GraphqlService {
 
   public getUserData(): Promise<boolean>{
     return new Promise<boolean>((resolve, reject) => {
-      this.graphqlQuery({query:USER_LOCATION}).valueChanges.pipe(take(1))
-        .subscribe(
-          (result:any) =>{
-          if (result.errors){
-            resolve(false);
-          }
-          else{
-            const data = result.data.userPostalCode.edges[0].node;
-            const location:LOCATION = {
-              postal_code : data.code === 0 ? null : data.code,
-              region : data.region.name,
-              state_or_province : data.region.stateOrProvince.name,
-              country_code: data.region.stateOrProvince.country.code
+      this.graphqlMutation(ME_QUERY).pipe(take(1))
+      .subscribe(
+        (result:any) => {
+          const user = result.data.me;
+
+          let institution:INSTITUTION = null;
+          if (user.studentprofile.institution != null){
+            institution = {
+              uid: user.studentprofile.institution.uid,
+              name: user.studentprofile.institution.name
             }
-
-            this.graphqlMutation(ME_QUERY).pipe(take(1))
-            .subscribe(
-              (result:any) => {
-                const user = result.data.me;
-                const user_obj:USER_OBJ = {
-                  uid: user.uid,
-                  email: user.email,
-                  username: user.username,
-                  fullName: user.firstName,
-                  sex: (user.sex).toLowerCase(),
-                  dob: user.dob,
-                  profilePictureUrl: user.profilePictureUrl,
-                  location: location
-                }
-
-                this.userDataService.setItem({
-                  userObject:user_obj,
-                  studentState:user.studentprofile.state
-                });
-
-                user.studentprofile.relatedstudentinterestkeywordSet.edges.forEach(element => {
-                  this.appDataShareService.studentInterest.push({
-                    id: element.node.interest.id,
-                    name: element.node.interest.word,
-                    selected: false,
-                    saved: element.node.saved,
-                    count: element.node.count,
-                    average_percent: element.node.averagePercentage
-                  });
-                });
-                resolve(true);
-              },
-              error =>{
-                resolve(false);
-              },
-            );
           }
+
+          const user_obj:USER_OBJ = {
+            uid: user.uid,
+            email: user.email,
+            username: user.username,
+            fullName: user.firstName,
+            sex: (user.sex).toLowerCase(),
+            dob: user.dob,
+            age: user.age,
+            profilePictureUrl: user.profilePictureUrl,
+            institution: institution,
+            location: {
+              postal_code: user.location.code === 0 ? null : user.location.code,
+              region: user.location.region.name,
+              state_or_province: user.location.region.stateOrProvince.name,
+              country_code: user.location.region.stateOrProvince.country.code,
+              country_name: user.location.region.stateOrProvince.country.name
+            },
+            locationPreference: user.studentprofile.locationPreference.toLowerCase(),
+            agePreference: Number(user.studentprofile.agePreference),
+            conversationPoints: Number(user.studentprofile.conversationPoints)
+          }
+
+          this.userDataService.setItem({
+            userObject:user_obj,
+            studentState:user.studentprofile.state
+          });
+
+          user.studentprofile.relatedstudentinterestkeywordSet.edges.forEach(element => {
+            this.appDataShareService.studentInterest.push({
+              id: element.node.interest.id,
+              name: element.node.interest.word,
+              selected: false,
+              saved: element.node.saved,
+              count: element.node.count,
+              average_percent: element.node.averagePercentage
+            });
+          });
+          resolve(true);
         },
         error =>{
           resolve(false);
-        }
+        },
       );
     });
-
   }
 
 

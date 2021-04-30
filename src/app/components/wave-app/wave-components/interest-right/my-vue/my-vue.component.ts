@@ -1,7 +1,6 @@
-import { dev_prod } from './../../../../../_helpers/constents';
 import { take } from 'rxjs/operators';
 import { AppDataShareService } from './../../../../../_services/app-data-share.service';
-import { Component, isDevMode, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-my-vue',
@@ -15,8 +14,7 @@ export class MyVueComponent implements OnInit, OnDestroy {
     private Ref:ChangeDetectorRef
     ) { }
 
-  typography_backgorund_url:string;
-  appContainerHeight:string;
+  vue_backgorund_url:string;
   myVueEmpty:boolean;
   myVueArrayLength = 0;
 
@@ -47,7 +45,7 @@ export class MyVueComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    isDevMode() ? this.typography_backgorund_url="url('assets/svg/topography.svg')" : this.typography_backgorund_url="url("+dev_prod.staticUrl_prod+'assets/svg/topography.svg'+")";
+    this.vue_backgorund_url = this.appDataShareService.vue_background;
     this.navStateChange('createdvues');
   }
 

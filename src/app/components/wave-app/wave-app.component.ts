@@ -22,11 +22,15 @@ export class WaveAppComponent implements OnInit, OnDestroy, AfterViewInit {
     ) { }
 
   @ViewChild('appContainer') appContainerElement: ElementRef;
+  @ViewChild('appRightContainer') appRightContainer: ElementRef;
 
   responsiveUnsub: Subscription;
   appColum = 'col-10';
+
   appContainerHeight:number;
   appContainerWidth:number;
+  appRightContainerWidth:number;
+
   userObj:USER_OBJ;
   alertBox:ALERT_BOX = {
     open:false,
@@ -69,16 +73,20 @@ export class WaveAppComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(){
     this.appContainerHeight = this.appContainerElement.nativeElement.offsetHeight - 2;
     this.appContainerWidth = this.appContainerElement.nativeElement.offsetWidth;
+    this.appRightContainerWidth = this.appRightContainer.nativeElement.offsetWidth;
     this.appDataShareService.appContainerHeight = this.appContainerHeight;
     this.appDataShareService.appContainerWidth = this.appContainerWidth;
+    this.appDataShareService.appRightContainerWidth = this.appRightContainerWidth;
     this.Ref.detectChanges();
 
     this.responsiveUnsub = this.responsiveService.getScreenWidthStatus()
     .subscribe( () =>{
       this.appContainerHeight = this.appContainerElement.nativeElement.offsetHeight - 2;
       this.appContainerWidth = this.appContainerElement.nativeElement.offsetWidth;
+      this.appRightContainerWidth = this.appRightContainer.nativeElement.offsetWidth;
       this.appDataShareService.appContainerHeight = this.appContainerHeight;
       this.appDataShareService.appContainerWidth = this.appContainerWidth;
+      this.appDataShareService.appRightContainerWidth = this.appRightContainerWidth;
       this.Ref.detectChanges();
     });
   }

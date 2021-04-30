@@ -22,8 +22,29 @@ mutation login($email:String!, $password:String!){
       lastName
       sex
       dob
+      age
+      location{
+        code
+        region{
+          name
+          stateOrProvince{
+            name
+            country{
+              name
+              code
+            }
+          }
+        }
+      }
       profilePictureUrl
       studentprofile{
+        institution{
+          uid
+          name
+        }
+        conversationPoints
+        locationPreference
+        agePreference
         state
         relatedstudentinterestkeywordSet{
           edges{
@@ -58,8 +79,29 @@ mutation login($username:String!, $password:String!){
       lastName
       sex
       dob
+      age
+      location{
+        code
+        region{
+          name
+          stateOrProvince{
+            name
+            country{
+              name
+              code
+            }
+          }
+        }
+      }
       profilePictureUrl
       studentprofile{
+        institution{
+          uid
+          name
+        }
+        conversationPoints
+        locationPreference
+        agePreference
         state
         relatedstudentinterestkeywordSet{
           edges{
@@ -110,8 +152,29 @@ query{
     lastName
     sex
     dob
+    age
+    location{
+      code
+      region{
+        name
+        stateOrProvince{
+          name
+          country{
+            name
+            code
+          }
+        }
+      }
+    }
     profilePictureUrl
     studentprofile{
+      institution{
+        uid
+        name
+      }
+      conversationPoints
+      locationPreference
+      agePreference
       state
       relatedstudentinterestkeywordSet{
         edges{
@@ -521,6 +584,142 @@ export const STUDENT_INTEREST_SNAPSHOT = gql`
 mutation{
   studentInterestSnapshot(input:{}){
     result
+  }
+}
+`
+
+export const VUE_FEED = gql`
+query vue_feed($first:Int, $after:String){
+  vueFeed(first: $first, after: $after, opened: false, saved: false){
+    pageInfo{
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges{
+      node{
+        id
+        priority
+        vue{
+          id
+          truncatedTitle
+          description
+          domainName
+          url
+          siteName
+          image
+          create
+          country
+          region
+          institution
+          locationPreference
+          age
+          agePreference
+          conversationPoint
+          conversationDisabled
+          newConversationDisabled
+          autoConversationDisabled
+          vueinterestSet{
+            edges{
+              node{
+                interestKeyword{
+                  id
+                  word
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+
+export const VUE_HISTORY = gql`
+query vue_feed($first:Int, $after:String){
+  vueFeed(first: $first, after: $after, opened: true){
+    pageInfo{
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges{
+      node{
+        id
+        priority
+        vue{
+          id
+          truncatedTitle
+          description
+          domainName
+          url
+          siteName
+          image
+          create
+          country
+          region
+          age
+          conversationDisabled
+          newConversationDisabled
+          autoConversationDisabled
+          vueinterestSet{
+            edges{
+              node{
+                interestKeyword{
+                  id
+                  word
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+
+export const VUE_SAVED = gql`
+query vue_feed($first:Int, $after:String){
+  vueFeed(first: $first, after: $after, saved: true){
+    pageInfo{
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    edges{
+      node{
+        id
+        priority
+        vue{
+          id
+          truncatedTitle
+          description
+          domainName
+          url
+          siteName
+          image
+          create
+          country
+          region
+          age
+          conversationDisabled
+          newConversationDisabled
+          autoConversationDisabled
+          vueinterestSet{
+            edges{
+              node{
+                interestKeyword{
+                  id
+                  word
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 `

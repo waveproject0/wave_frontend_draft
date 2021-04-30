@@ -1,0 +1,40 @@
+<mat-toolbar class="nav-color-2 mat-elevation-z0 app-status-bar justify-content-between">
+  <p class="mat-body-2 space-gray-color-text mb-0"><strong>Vue History</strong></p>
+  <p class="mat-caption rich-black-color-text mb-0"><strong>0</strong></p>
+  <button mat-icon-button disableRipple class="button-style-1 mat-elevation-z2" style="visibility: hidden;">
+    <mat-icon style="line-height: 22px;">add</mat-icon>
+  </button>
+</mat-toolbar>
+
+
+<div class="app-container-style" style="max-height: max-content" [style.background-image]="vue_backgorund_url">
+  <div *ngIf="loading || vueError || vueEmpty; else VueHistory" class="d-flex flex-column justify-content-center align-items-center" [style.height]="appContainerHeight">
+    <ng-container *ngIf="loading">
+      <app-loading></app-loading>
+    </ng-container>
+
+    <ng-container *ngIf="vueError">
+      <div>
+        <p class="mat-display-1 mb-0 d-inline-block"><strong>Sorry,</strong></p>
+        <p class="mat-subheading-1 d-inline-block">&nbsp;
+          <strong class="pr-2 pl-2 pt-1 pb-1" style="border:3px solid var(--rich-red); border-radius: 7px;">
+            Error Occurred
+          </strong>
+        </p>
+      </div>
+      <button class="button-style-1 w-25 mt-3" mat-raised-button disableRipple type="button" (click)="getVueFeed()">
+        Try Again
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="vueEmpty=== true">
+      <p class="mat-title" style="color:var(--gray-text); font-family: 'Poppins';">
+        You haven't opened any <strong>Vue</strong> yet!
+      </p>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #VueHistory>
+
+</ng-template>

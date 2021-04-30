@@ -39,7 +39,22 @@
         <mat-icon class="gray-color-text" style="font-size: 14px; height: 14px; width: 14px;">favorite</mat-icon>
       </div>
     </div>
+
+    <div *ngIf="!editVue" class="d-flex justify-content-between" style="height: 20px;">
+      <div>
+        <mat-icon class="gray-color-text" style="font-size: 14px; height: 14px; width: 14px;">place</mat-icon>
+        <span class="mat-caption" style="position: relative; bottom: 2.3px; margin-left: 4px;">{{linkPreview.country}}</span>
+      </div>
+      <span class="mat-caption">{{linkPreview.friendly_date}}</span>
+      <div>
+        <span class="mat-caption" style="position: relative; bottom: 2.3px; margin-right: 4px;">{{linkPreview.age}}</span>
+        <mat-icon class="gray-color-text" style="font-size: 14px; height: 14px; width: 14px;">cake</mat-icon>
+      </div>
+    </div>
+
   </div>
+
+
 
   <div *ngIf="createVue" class="d-flex justify-content-between align-items-center vue-action"
   [ngClass]="disableNewConversation ? 'vue-conversation-disabled' : 'vue-conversation-enabled'"
@@ -100,25 +115,28 @@
 
     </div>
   </div>
-</div>
 
-<div *ngIf="!createVue && !editVue" class="d-flex justify-content-between align-items-center vue-action"
+  <div *ngIf="!createVue && !editVue" class="d-flex justify-content-between align-items-center vue-action"
   [ngClass]="linkPreview.conversation_disabled ? 'vue-conversation-disabled' : 'vue-conversation-enabled'"
   [style.backgroundColor]="vueSubmitError ? 'var(--rich-red)' : null"
   >
-    <div class="ml-2 nowrap">{{linkPreview.site_name ? linkPreview.site_name : linkPreview.domain_name}}</div>
-    <button mat-icon-button>
-      <mat-icon class="vue-action-icon">forum</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon class="vue-action-icon">favorite_border</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon class="vue-action-icon">more_vert</mat-icon>
-    </button>
+  <drag-scroll class="disable-select ml-2 nowrap" style="height: 100%; width: 40%;" [scrollbar-hidden]="true" [drag-scroll-y-disabled]="true">
+    <span style="line-height: 2.3;">{{linkPreview.site_name ? linkPreview.site_name : linkPreview.domain_name}}</span>
+  </drag-scroll>
+    <div>
+      <button mat-icon-button>
+        <mat-icon class="vue-action-icon">forum</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="vue-action-icon">favorite_border</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="vue-action-icon">more_vert</mat-icon>
+      </button>
+    </div>
   </div>
 
-
+</div>
 
 
 <ng-template #vueInterest>

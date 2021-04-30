@@ -16,9 +16,15 @@
       </span>
       <span *ngIf="headlineClass === 'mat-title'" class="mat-title" style="font-weight: 600;"> Self</span>
     </p>
+
     <p class="mb-4" [class.text-center]="headlineClass === 'mat-title'" [ngClass]="headlineClass === 'mat-display-1' ? 'mat-title' : 'mat-subheading-1'">
-      Connect with students, you can relate to
+      Connect with students & Create your circle of explorers
     </p>
+
+    <p class="mb-4" [class.text-center]="headlineClass === 'mat-title'" [ngClass]="headlineClass === 'mat-display-1' ? 'mat-subheading-1' : 'mat-caption'">
+      A platform where students team up and explore their curiosity, Together.
+    </p>
+
     <div class="d-flex" [class.justify-content-center]="headlineClass === 'mat-title'">
       <button mat-raised-button disableRipple routerLink="/account" fragment="signup" class="button-style-1" [ngClass]="headlineClass === 'mat-title' ? 'w-75' : ''">
         Welcome Aboard
@@ -96,7 +102,7 @@
                 <P class="mt-4" style="font-weight: 500;font-family: Poppins;" [ngClass]="headlineClass === 'mat-title' ? 'mat-title' : 'mat-headline'">
                   <strong class="pacific-blue-text">Create</strong> something exciting, Together.
                 </P>
-                <p class="mat-body-2">Don’t just talk!&nbsp;&nbsp;<strong>create</strong>&nbsp;<strong>learn</strong>&nbsp;<strong>solve</strong>  and <strong>explore</strong>, Together.</p>
+                <p class="mat-body-2">Don’t just talk!&nbsp;&nbsp;<strong>create, </strong>&nbsp;<strong>learn, </strong>&nbsp;<strong>solve, </strong>  and <strong>explore</strong> Together.</p>
                 <p class="mat-body-2">Every interaction comes with endless possibilities, and exploring them is what this platform is all about.</p>
                 <div class="d-flex" [class.justify-content-center]="headlineClass === 'mat-title'">
                   <button mat-raised-button disableRipple routerLink="/account" fragment="signup" class="button-style-1" [ngClass]="headlineClass === 'mat-title' ? 'w-100' : ''">

@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "gzip": "gzipper c ./dist/nextgen-frontend ./dist/nextgen-frontend-gzip"
+    "gzip": "gzipper c ./dist/nextgen-frontend ./dist/nextgen-frontend-gzip",
+    "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/nextgen-frontend/stats.json"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,4 @@
-import { LOCATION, LOCATION_JSON, dev_prod } from './../../_helpers/constents';
+import { LOCATION_JSON, dev_prod } from './../../_helpers/constents';
 import { take } from 'rxjs/operators';
 import {
   RESEND_ACTIVATION_EMAIL,

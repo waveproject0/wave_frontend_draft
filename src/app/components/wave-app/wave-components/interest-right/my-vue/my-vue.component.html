@@ -25,9 +25,7 @@
 
 </mat-toolbar>
 
-<div class="app-container-style" [style.min-height]="appContainerHeight" [style.background-image]="typography_backgorund_url"
-style="max-height: max-content"
->
+<div class="app-container-style" style="max-height: max-content" [style.background-image]="vue_backgorund_url">
   <app-created-vues class="w-100" *ngIf="navCreatedVuesState" (createVueRequest)="navStateChange('createvue')"
   (myVueEmptyEvent)="VueEmptyEvent($event)"
   >

@@ -29,8 +29,8 @@
 
 <ng-template #myVueList>
   <div *ngIf="!loading && myVueEmpty === false" [style.min-height]="appContainerHeight">
-    <div *ngIf="masonryLoading" class="d-flex justify-content-center align-items-center" style="position:absolute; width: 95%;"
-    [style.min-height]="appContainerHeight"
+    <div *ngIf="masonryLoading" class="d-flex justify-content-center align-items-center" style="position:absolute;"
+    [style.min-height]="appContainerHeight" [style.min-width]="appRightContainerWidth"
     >
       <app-loading></app-loading>
     </div>
@@ -42,7 +42,7 @@
       </app-vue>
     </ngx-masonry>
 
-    <div *ngIf="fetchMore || fetchMoreError" class="d-flex justify-content-center mt-4">
+    <div *ngIf="(fetchMore || fetchMoreError) && !masonryLoading" class="d-flex justify-content-center mt-4">
       <button class="button-style-2 button-load-style" style="width: 20rem;" mat-raised-button disableRipple type="button"
       (click)="getMyVue(true)" [ngClass]="fetchMoreError ? 'button-error-style' : 'button-style-2' "
       >

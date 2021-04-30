@@ -1,9 +1,9 @@
 import { timeSince } from 'src/app/_helpers/functions.utils';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { VUE_CONVERSATION_UPDATE, VUE_PUBLISH, VUE_DESCRIPTION_UPDATE, VUE_DELETE } from './../../_helpers/graphql.query';
-import { GraphqlService } from './../../_services/graphql.service';
-import { AppDataShareService } from './../../_services/app-data-share.service';
-import { INTEREST_KEYWORD } from './../../_helpers/constents';
+import { VUE_CONVERSATION_UPDATE, VUE_PUBLISH, VUE_DESCRIPTION_UPDATE, VUE_DELETE } from './../../../../_helpers/graphql.query';
+import { GraphqlService } from './../../../../_services/graphql.service';
+import { AppDataShareService } from './../../../../_services/app-data-share.service';
+import { INTEREST_KEYWORD } from './../../../../_helpers/constents';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { Component, OnInit, Input, ViewChild, NgZone, OnDestroy, Output, EventEmitter } from '@angular/core';
