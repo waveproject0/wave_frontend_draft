@@ -51,7 +51,7 @@ export class CreateVueComponent implements OnInit {
 
   linkPreviewApi(link){
     const postData = {
-      key:"ebf51b5b1f009deb57bd0b5f7879f541",
+      key:"",
       q:link
     }
     this.http.post("https://api.linkpreview.net",postData)
@@ -112,7 +112,7 @@ export class CreateVueComponent implements OnInit {
     const postData = {
       linkpreview:true,
       id:link,
-      access_token:"531959037948716%7CY6r4GuUxW8txZ_fkaq21cf0ZIKM"
+      access_token:""
     }
     this.http.post("https://graph.facebook.com/v9.0/",postData)
     .toPromise().then((data:any) =>{
